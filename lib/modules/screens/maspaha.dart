@@ -104,9 +104,7 @@ class _SephaScreenState extends State<SephaScreen> {
                     ),
                     onPressed: () {
                       setState(() {
-                        index = 0;
-                        counter = 0;
-                        round = 0;
+                        _resetCounter();
                       });
                     },
                   ),
@@ -130,5 +128,22 @@ class _SephaScreenState extends State<SephaScreen> {
         round++;
       }
     }
+  }
+
+  void _resetCounter() {
+    counter = 0;
+    index = 0;
+    round = 0;
+  }
+
+  void _oldIncrementCounter() {
+    if ((counter == 33 || counter == 66 || counter == 99) && index < 2) {
+      index++;
+    } else if (index == 2 && counter == 99) {
+      index = 0;
+      round++;
+      counter = 0;
+    }
+    counter++;
   }
 }
